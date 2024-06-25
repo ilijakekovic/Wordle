@@ -1,0 +1,27 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px; /* Adjust the gap size as needed */
+}
+
+.grid-item {
+    background-color: #ccc; /* Set the background color as desired */
+    border: 1px solid #000; /* Set the border style as desired */
+    /* Add any other styling for the grid items */
+}
+
+.grid-item-correct {
+    background-color: #0f0; /* Set the background color for the correct item */
+}
+
+.grid-item-wrong {
+    background-color: #f00; /* Set the background color for the wrong item */
+}
+body{
+    text-align: center;
+}
+
+#guess{
+    margin-top: 2vh;
+}
