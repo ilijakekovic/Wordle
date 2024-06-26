@@ -89,15 +89,17 @@ guessBtn.addEventListener("Click", function () {
 });
 
 guess.addEventListener("keypress", function (e) {
-    console.log(isWordNNumbers(guess.value, 5) + " " + guess.value);
-  if (e.key === "Enter" && isWordNNumbers(guess.value, 5)) {
-    if (nClicks < 5) {
-      checkLetter(nClicks);
-      nClicks++;
+    console.log(e.key + " " + isWordNNumbers(guess.value, 5) + " " + nClicks + " " + guess.value);
+  if (e.key === "Enter") {
+    if(isWordNNumbers(guess.value, 5)){
+        if (nClicks < 6) {
+            checkLetter(nClicks);
+            nClicks++;
+        }
+        updateGuessArray();
     }
-    updateGuessArray();
-  }
-  else{
-    alert("Invalid input. Please enter a 5-letter word.");
+    else{
+        alert("Invalid input. Please enter a 5-letter word.");
+    }
   }
 });

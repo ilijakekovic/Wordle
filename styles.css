@@ -1,4 +1,5 @@
 .grid-container {
+    font-size: 3vh;
     margin: 0 auto;
     width: 60%;
     display: grid;
@@ -18,11 +19,12 @@
 }
 
 .grid-item-correct {
-    background-color: #0f0;
+    background-color: #9313c5;
+    color: white;
 }
 
 .grid-item-wrong {
-    background-color: #f00;
+    background-color: rgb(180, 2, 115) ;
 }
 body{
     text-align: center;
@@ -36,6 +38,10 @@ body{
 *{
     font-size: 130%;
     overflow: hidden;
+}
+h1{
+    color: #BC13FE;
+    font-size: 5vh;
 }
 
 /*if screensize is small adjust values*/
