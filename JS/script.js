@@ -72,10 +72,21 @@ function checkLetter(n) {
 
 // Update guessArray with current guess
 function updateGuessArray() {
-    guessArray = guess.value.split("");
+    guessArray = guess.value.toLowerCase().split("");
+    guess.value = "";
     console.log("Guess array: ", guessArray);
 }
 
 // Assuming there is some way to update `guess` element with user input
 // Update guessArray each time before checking the letters
 guessBtn.addEventListener("Click", updateGuessArray());
+//if enter is pressed instead of clicking the button
+guess.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    if (nClicks < 5) {
+        checkLetter(nClicks);
+        nClicks++;
+    }
+    updateGuessArray();
+  }
+});

@@ -3,27 +3,36 @@
     width: 60%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 10px; /* Adjust the gap size as needed */
 }
 
 .grid-item {
-    background-color: #ccc; /* Set the background color as desired */
-    border: 1px solid #000; /* Set the border style as desired */
-    /* Add any other styling for the grid items */
+    background-color: #ccc;
+    border: 1px solid #000; 
+    border-radius: 3%;
+    /*Make all items square*/
+    padding-top: 10%;
+    padding-bottom: 10%;
+    
 }
 
 .grid-item-correct {
-    background-color: #0f0; /* Set the background color for the correct item */
+    background-color: #0f0;
 }
 
 .grid-item-wrong {
-    background-color: #f00; /* Set the background color for the wrong item */
+    background-color: #f00;
 }
 body{
     text-align: center;
 }
 
 #guess{
-    margin-top: 2vh;
+    margin-top: 5vh;
+}
+
+*{
+    font-size: 130%;
+    overflow: hidden;
 }
