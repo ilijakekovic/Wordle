@@ -1,3 +1,5 @@
+import { isWordNNumbers, isWord, FullCheck } from "./validation.js";
+
 // DOM method
 function $(selector) {
   return document.querySelector(selector);
@@ -41,9 +43,14 @@ const elements = [
 
 // check the input for the word
 guessBtn.addEventListener("click", function () {
-  if (nClicks < 5) {
-    checkLetter(nClicks);
-    nClicks++;
+  if (FullCheck(guess.value, 5)) {
+    if (nClicks < 5) {
+        checkLetter(nClicks);
+        nClicks++;
+      }
+  }
+  else {
+    alert("Invalid input. Please enter a 5-letter word.");
   }
 });
 
@@ -72,21 +79,31 @@ function checkLetter(n) {
 
 // Update guessArray with current guess
 function updateGuessArray() {
-    guessArray = guess.value.toLowerCase().split("");
-    guess.value = "";
-    console.log("Guess array: ", guessArray);
+  guessArray = guess.value.toLowerCase().split("");
+  guess.value = "";
+  console.log("Guess array: ", guessArray);
 }
 
-// Assuming there is some way to update `guess` element with user input
-// Update guessArray each time before checking the letters
-guessBtn.addEventListener("Click", updateGuessArray());
-//if enter is pressed instead of clicking the button
+guessBtn.addEventListener("Click", function () {
+    if (FullCheck(guess.value, 5)) {
+    updateGuessArray();
+  }
+  else {
+    alert("Invalid input. Please enter a 5-letter word.");
+  }
+});
+
 guess.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    if (nClicks < 5) {
+  if (FullCheck(guess.value, 5)) {
+    if (e.key === "Enter") {
+      if (nClicks < 5) {
         checkLetter(nClicks);
         nClicks++;
+      }
+      updateGuessArray();
     }
-    updateGuessArray();
+  }
+  else {
+    alert("Invalid input. Please enter a 5-letter word.");
   }
 });
