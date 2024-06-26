@@ -1,4 +1,4 @@
-import { isWordNNumbers, isWord, FullCheck } from "./validation.js";
+import { isWordNNumbers, isWord } from "./validation.js";
 
 // DOM method
 function $(selector) {
@@ -39,17 +39,17 @@ const elements = [
   ["#w3l1", "#w3l2", "#w3l3", "#w3l4", "#w3l5"],
   ["#w4l1", "#w4l2", "#w4l3", "#w4l4", "#w4l5"],
   ["#w5l1", "#w5l2", "#w5l3", "#w5l4", "#w5l5"],
+  ["#w6l1", "#w6l2", "#w6l3", "#w6l4", "#w6l5"],
 ];
 
 // check the input for the word
 guessBtn.addEventListener("click", function () {
-  if (FullCheck(guess.value, 5)) {
+  if (isWordNNumbers(guess.value, 5)) {
     if (nClicks < 5) {
-        checkLetter(nClicks);
-        nClicks++;
-      }
-  }
-  else {
+      checkLetter(nClicks);
+      nClicks++;
+    }
+  } else {
     alert("Invalid input. Please enter a 5-letter word.");
   }
 });
@@ -57,15 +57,12 @@ guessBtn.addEventListener("click", function () {
 function checkLetter(n) {
   updateGuessArray();
   const currentRow = elements[n];
-  console.log("Current row: ", currentRow);
-  console.log();
 
   for (let i = 0; i < currentRow.length; i++) {
     const cell = $(currentRow[i]);
     const guess = guessArray[i]; // Adjust index if needed
 
     cell.innerHTML = guess;
-    console.log("Guess: ", guess);
 
     if (guess === wordArray[i]) {
       cell.classList.add("grid-item-correct");
@@ -81,29 +78,26 @@ function checkLetter(n) {
 function updateGuessArray() {
   guessArray = guess.value.toLowerCase().split("");
   guess.value = "";
-  console.log("Guess array: ", guessArray);
 }
 
 guessBtn.addEventListener("Click", function () {
-    if (FullCheck(guess.value, 5)) {
+  if (isWordNNumbers(guess.value, 5)) {
     updateGuessArray();
-  }
-  else {
+  } else {
     alert("Invalid input. Please enter a 5-letter word.");
   }
 });
 
 guess.addEventListener("keypress", function (e) {
-  if (FullCheck(guess.value, 5)) {
-    if (e.key === "Enter") {
-      if (nClicks < 5) {
-        checkLetter(nClicks);
-        nClicks++;
-      }
-      updateGuessArray();
+    console.log(isWordNNumbers(guess.value, 5) + " " + guess.value);
+  if (e.key === "Enter" && isWordNNumbers(guess.value, 5)) {
+    if (nClicks < 5) {
+      checkLetter(nClicks);
+      nClicks++;
     }
+    updateGuessArray();
   }
-  else {
+  else{
     alert("Invalid input. Please enter a 5-letter word.");
   }
 });
