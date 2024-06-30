@@ -9,7 +9,7 @@
 }
 
 .grid-item {
-    background-color: #ccc;
+    background-color: #919191;
     border: 1px solid #000; 
     border-radius: 3%;
     /*Make all items square*/
@@ -19,16 +19,16 @@
 }
 
 .grid-item-correct {
-    background-color: #9313c5;
+    background-color: #79ce48;
     color: white;
 }
 
 .grid-item-wrong {
-    background-color: rgb(180, 2, 115) ;
+    background-color: rgb(241, 204, 79) ;
 }
 body{
     text-align: center;
-    background-color: #191919;
+    background-color: #c9c9c9;
 }
 
 #guess{
