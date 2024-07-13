@@ -1,5 +1,7 @@
 import { isWordNNumbers, isWord } from "./validation.js";
 
+let isSolved = false;
+
 // DOM method
 function $(selector) {
   return document.querySelector(selector);
@@ -72,7 +74,10 @@ function checkLetter(n) {
       cell.classList.add("grid-item");
     }
   }
+
+  checkIfSolved(); // Call checkIfSolved after updating guessArray
 }
+
 
 // Update guessArray with current guess
 function updateGuessArray() {
@@ -90,16 +95,25 @@ guessBtn.addEventListener("Click", function () {
 
 guess.addEventListener("keypress", function (e) {
     console.log(e.key + " " + isWordNNumbers(guess.value, 5) + " " + nClicks + " " + guess.value);
-  if (e.key === "Enter") {
+  if (e.key === "Enter" && !isSolved) {
     if(isWordNNumbers(guess.value, 5)){
         if (nClicks < 6) {
             checkLetter(nClicks);
             nClicks++;
         }
         updateGuessArray();
+        checkIfSolved();
     }
     else{
         alert("Invalid input. Please enter a 5-letter word.");
     }
   }
 });
+
+function checkIfSolved() {
+  if (guessArray.join("") === wordArray.join("")) {
+    isSolved = true;
+    guess.disabled = true;
+    guessBtn.disabled = true;
+  }
+}
